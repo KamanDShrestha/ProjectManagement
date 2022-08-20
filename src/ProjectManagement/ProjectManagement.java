@@ -30,12 +30,14 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author KAMAN
  */
 public class ProjectManagement extends javax.swing.JFrame {
+    int selectedRow;
     static final String DB_URL = "jdbc:mysql://localhost/project_management";
     static final String PASSWORD = "";
     static final String USER = "root";
@@ -221,7 +223,53 @@ return null;
         usersInfoTbl = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         profilePage = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        nameLbl = new javax.swing.JLabel();
+        userNameDisplay = new javax.swing.JLabel();
+        emailLbl = new javax.swing.JLabel();
+        emailDisplay = new javax.swing.JLabel();
+        emailLbl1 = new javax.swing.JLabel();
+        numberDisplay = new javax.swing.JLabel();
+        departmentDisplay = new javax.swing.JLabel();
+        emailLbl2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        nameLbl1 = new javax.swing.JLabel();
+        yourNameUpdate = new javax.swing.JLabel();
+        departmentUpdatePnl = new javax.swing.JPanel();
+        departmentUpdateTxtFld = new javax.swing.JTextField();
+        emailUpdatePnl = new javax.swing.JPanel();
+        emailUpdateTxtFld = new javax.swing.JTextField();
+        numberUpdatePnl = new javax.swing.JPanel();
+        numberUpdateTxtFld = new javax.swing.JTextField();
+        updateInfoBtn = new javax.swing.JButton();
         editProjects = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        editProjectsTbl = new javax.swing.JTable();
+        updateProjectLbl = new javax.swing.JLabel();
+        projectLbl = new javax.swing.JLabel();
+        projectDisplayLbl = new javax.swing.JLabel();
+        teamLeadLbl = new javax.swing.JLabel();
+        teamLeadDisplayLbl = new javax.swing.JLabel();
+        departmentLbl = new javax.swing.JLabel();
+        departmentDisplayLbl = new javax.swing.JLabel();
+        completionComboBox = new javax.swing.JComboBox<>();
+        completionStatusLbl = new javax.swing.JLabel();
+        assignedDatePLbl = new javax.swing.JLabel();
+        assignedYearP = new javax.swing.JComboBox<>();
+        assignedMonthP = new javax.swing.JComboBox<>();
+        assignedDayP = new javax.swing.JComboBox<>();
+        dueDateP = new javax.swing.JLabel();
+        dueYearP = new javax.swing.JComboBox<>();
+        dueMonthP = new javax.swing.JComboBox<>();
+        dueDayP = new javax.swing.JComboBox<>();
+        costUpdatePnl = new javax.swing.JPanel();
+        costUpdateTxtFld = new javax.swing.JTextField();
+        updateDateBtn = new javax.swing.JButton();
+        completionDateP = new javax.swing.JLabel();
+        completionYearP = new javax.swing.JComboBox<>();
+        completionMonthP = new javax.swing.JComboBox<>();
+        completionDayP = new javax.swing.JComboBox<>();
+        changeStatusBtn = new javax.swing.JButton();
         forgetPassPnl = new javax.swing.JPanel();
         forgetPassLbl = new javax.swing.JLabel();
         forgetInfoPnl = new javax.swing.JLabel();
@@ -229,12 +277,15 @@ return null;
         userForgetTxtFld = new javax.swing.JTextField();
         emailForgetPnl = new javax.swing.JPanel();
         emailForgetTxtFld = new javax.swing.JTextField();
-        passRForgetPnl = new javax.swing.JPanel();
-        passRForgetTxtFld = new javax.swing.JTextField();
-        passForgetPnl = new javax.swing.JPanel();
-        passForgetTxtFld = new javax.swing.JTextField();
         submitBtn = new javax.swing.JButton();
+        passEnterPnl = new javax.swing.JPanel();
+        passRForgetPnl = new javax.swing.JPanel();
+        passRForgetTxtFld = new javax.swing.JPasswordField();
+        passForgetPnl = new javax.swing.JPanel();
+        passForgetTxtFld = new javax.swing.JPasswordField();
         backForgetBtn = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        validateBtn = new javax.swing.JButton();
         logInPnl = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         logoP = new javax.swing.JLabel();
@@ -243,7 +294,7 @@ return null;
         userNamePnl = new javax.swing.JPanel();
         userLogInTxtFld = new javax.swing.JTextField();
         passPnl = new javax.swing.JPanel();
-        passLogInTxtFld = new javax.swing.JTextField();
+        passLogInTxtFld = new javax.swing.JPasswordField();
         logInBtn = new javax.swing.JButton();
         forgetPasswordRadio = new javax.swing.JRadioButton();
         registerBtn = new javax.swing.JButton();
@@ -891,28 +942,505 @@ return null;
 
         mainTabbedPane.addTab("User Information", usersPage);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setText("Update your profile");
+
+        nameLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nameLbl.setText("Your Name:");
+
+        userNameDisplay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        userNameDisplay.setText("your name");
+
+        emailLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        emailLbl.setText("Mobile Number:");
+
+        emailDisplay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        emailDisplay.setText("your email");
+
+        emailLbl1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        emailLbl1.setText("Email:");
+
+        numberDisplay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        numberDisplay.setText("your mobile number");
+
+        departmentDisplay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        departmentDisplay.setText("your department");
+
+        emailLbl2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        emailLbl2.setText("Department:");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel9.setText("Profile");
+
+        nameLbl1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nameLbl1.setText("Name:");
+
+        yourNameUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        yourNameUpdate.setText("your name");
+
+        departmentUpdatePnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Department", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        departmentUpdateTxtFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departmentUpdateTxtFldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout departmentUpdatePnlLayout = new javax.swing.GroupLayout(departmentUpdatePnl);
+        departmentUpdatePnl.setLayout(departmentUpdatePnlLayout);
+        departmentUpdatePnlLayout.setHorizontalGroup(
+            departmentUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(departmentUpdatePnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(departmentUpdateTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        departmentUpdatePnlLayout.setVerticalGroup(
+            departmentUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(departmentUpdatePnlLayout.createSequentialGroup()
+                .addComponent(departmentUpdateTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        emailUpdatePnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        emailUpdateTxtFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailUpdateTxtFldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout emailUpdatePnlLayout = new javax.swing.GroupLayout(emailUpdatePnl);
+        emailUpdatePnl.setLayout(emailUpdatePnlLayout);
+        emailUpdatePnlLayout.setHorizontalGroup(
+            emailUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(emailUpdatePnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(emailUpdateTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        emailUpdatePnlLayout.setVerticalGroup(
+            emailUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(emailUpdatePnlLayout.createSequentialGroup()
+                .addComponent(emailUpdateTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        numberUpdatePnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mobile Number", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        numberUpdateTxtFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberUpdateTxtFldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout numberUpdatePnlLayout = new javax.swing.GroupLayout(numberUpdatePnl);
+        numberUpdatePnl.setLayout(numberUpdatePnlLayout);
+        numberUpdatePnlLayout.setHorizontalGroup(
+            numberUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(numberUpdatePnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(numberUpdateTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        numberUpdatePnlLayout.setVerticalGroup(
+            numberUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(numberUpdatePnlLayout.createSequentialGroup()
+                .addComponent(numberUpdateTxtFld)
+                .addContainerGap())
+        );
+
+        updateInfoBtn.setBackground(new java.awt.Color(51, 51, 51));
+        updateInfoBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        updateInfoBtn.setForeground(new java.awt.Color(204, 204, 204));
+        updateInfoBtn.setText("Update");
+        updateInfoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateInfoBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout profilePageLayout = new javax.swing.GroupLayout(profilePage);
         profilePage.setLayout(profilePageLayout);
         profilePageLayout.setHorizontalGroup(
             profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1367, Short.MAX_VALUE)
+            .addGroup(profilePageLayout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(profilePageLayout.createSequentialGroup()
+                        .addComponent(emailUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(numberUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(departmentUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(profilePageLayout.createSequentialGroup()
+                        .addGap(361, 361, 361)
+                        .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(profilePageLayout.createSequentialGroup()
+                                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(emailLbl1)
+                                    .addComponent(nameLbl1)
+                                    .addComponent(emailLbl2)
+                                    .addComponent(emailLbl))
+                                .addGap(53, 53, 53)
+                                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(numberDisplay)
+                                    .addComponent(emailDisplay)
+                                    .addComponent(userNameDisplay)
+                                    .addComponent(departmentDisplay)))))
+                    .addComponent(jLabel4)
+                    .addGroup(profilePageLayout.createSequentialGroup()
+                        .addComponent(nameLbl)
+                        .addGap(83, 83, 83)
+                        .addComponent(yourNameUpdate)))
+                .addContainerGap(159, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, profilePageLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(updateInfoBtn)
+                .addGap(601, 601, 601))
         );
         profilePageLayout.setVerticalGroup(
             profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 663, Short.MAX_VALUE)
+            .addGroup(profilePageLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLbl1)
+                    .addComponent(userNameDisplay))
+                .addGap(14, 14, 14)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLbl1)
+                    .addComponent(emailDisplay))
+                .addGap(18, 18, 18)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLbl)
+                    .addComponent(numberDisplay))
+                .addGap(18, 18, 18)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLbl2)
+                    .addComponent(departmentDisplay))
+                .addGap(82, 82, 82)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLbl)
+                    .addComponent(yourNameUpdate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(emailUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(departmentUpdatePnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(numberUpdatePnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(updateInfoBtn)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Profile Page", profilePage);
+
+        editProjectsTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Project Name", "Team Lead", "Department Name", "Assigned Date", "Due Date", "Completion Status", "Completion Date", "Cost"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        editProjectsTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editProjectsTblMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(editProjectsTbl);
+
+        updateProjectLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        updateProjectLbl.setText("Update your projects");
+
+        projectLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        projectLbl.setText("Project Name: ");
+
+        projectDisplayLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        projectDisplayLbl.setText("Choose your project");
+
+        teamLeadLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        teamLeadLbl.setText("Team Lead:");
+
+        teamLeadDisplayLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        teamLeadDisplayLbl.setText("Team's lead name");
+
+        departmentLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        departmentLbl.setText("Department:");
+
+        departmentDisplayLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        departmentDisplayLbl.setText("Department's name");
+
+        completionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doing", "Done" }));
+
+        completionStatusLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        completionStatusLbl.setText("Completion Status:");
+
+        assignedDatePLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        assignedDatePLbl.setText("Assigned Date");
+
+        assignedYearP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        assignedYearP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", " " }));
+        assignedYearP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignedYearPActionPerformed(evt);
+            }
+        });
+
+        assignedMonthP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        assignedMonthP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        assignedMonthP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignedMonthPActionPerformed(evt);
+            }
+        });
+
+        assignedDayP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        assignedDayP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", " ", " " }));
+        assignedDayP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignedDayPActionPerformed(evt);
+            }
+        });
+
+        dueDateP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dueDateP.setText("Due Date");
+
+        dueYearP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        dueYearP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", " " }));
+        dueYearP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dueYearPActionPerformed(evt);
+            }
+        });
+
+        dueMonthP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        dueMonthP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        dueMonthP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dueMonthPActionPerformed(evt);
+            }
+        });
+
+        dueDayP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        dueDayP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", " ", " " }));
+        dueDayP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dueDayPActionPerformed(evt);
+            }
+        });
+
+        costUpdatePnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cost", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        costUpdateTxtFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                costUpdateTxtFldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout costUpdatePnlLayout = new javax.swing.GroupLayout(costUpdatePnl);
+        costUpdatePnl.setLayout(costUpdatePnlLayout);
+        costUpdatePnlLayout.setHorizontalGroup(
+            costUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(costUpdatePnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(costUpdateTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        costUpdatePnlLayout.setVerticalGroup(
+            costUpdatePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(costUpdatePnlLayout.createSequentialGroup()
+                .addComponent(costUpdateTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        updateDateBtn.setBackground(new java.awt.Color(51, 51, 51));
+        updateDateBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        updateDateBtn.setForeground(new java.awt.Color(204, 204, 204));
+        updateDateBtn.setText("Save Changes");
+        updateDateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDateBtnActionPerformed(evt);
+            }
+        });
+
+        completionDateP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        completionDateP.setText("Completion Status");
+
+        completionYearP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        completionYearP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", " " }));
+        completionYearP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completionYearPActionPerformed(evt);
+            }
+        });
+
+        completionMonthP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        completionMonthP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+        completionMonthP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completionMonthPActionPerformed(evt);
+            }
+        });
+
+        completionDayP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        completionDayP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", " ", " " }));
+        completionDayP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completionDayPActionPerformed(evt);
+            }
+        });
+
+        changeStatusBtn.setBackground(new java.awt.Color(51, 51, 51));
+        changeStatusBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        changeStatusBtn.setForeground(new java.awt.Color(204, 204, 204));
+        changeStatusBtn.setText("Change status");
+        changeStatusBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeStatusBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout editProjectsLayout = new javax.swing.GroupLayout(editProjects);
         editProjects.setLayout(editProjectsLayout);
         editProjectsLayout.setHorizontalGroup(
             editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1367, Short.MAX_VALUE)
+            .addGroup(editProjectsLayout.createSequentialGroup()
+                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editProjectsLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(editProjectsLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateProjectLbl)
+                            .addGroup(editProjectsLayout.createSequentialGroup()
+                                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(projectLbl)
+                                    .addComponent(teamLeadLbl)
+                                    .addComponent(departmentLbl))
+                                .addGap(18, 18, 18)
+                                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(teamLeadDisplayLbl)
+                                    .addComponent(projectDisplayLbl)
+                                    .addComponent(departmentDisplayLbl))
+                                .addGap(118, 118, 118)
+                                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(editProjectsLayout.createSequentialGroup()
+                                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editProjectsLayout.createSequentialGroup()
+                                                .addGap(86, 86, 86)
+                                                .addComponent(assignedDatePLbl)
+                                                .addGap(71, 71, 71))
+                                            .addGroup(editProjectsLayout.createSequentialGroup()
+                                                .addComponent(assignedYearP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(assignedMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(assignedDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(41, 41, 41)
+                                        .addComponent(dueYearP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(updateDateBtn))
+                                .addGap(18, 18, 18)
+                                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(editProjectsLayout.createSequentialGroup()
+                                        .addComponent(dueMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(dueDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(dueDateP))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(costUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77)))))
+                .addContainerGap())
+            .addGroup(editProjectsLayout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(completionYearP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editProjectsLayout.createSequentialGroup()
+                        .addComponent(completionMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(completionDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(completionDateP))
+                .addGap(66, 66, 66)
+                .addComponent(completionStatusLbl)
+                .addGap(18, 18, 18)
+                .addComponent(completionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(changeStatusBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editProjectsLayout.setVerticalGroup(
             editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 663, Short.MAX_VALUE)
+            .addGroup(editProjectsLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(updateProjectLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editProjectsLayout.createSequentialGroup()
+                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(projectLbl)
+                            .addComponent(projectDisplayLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(teamLeadLbl)
+                            .addComponent(teamLeadDisplayLbl))
+                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(departmentLbl)
+                            .addComponent(departmentDisplayLbl)))
+                    .addGroup(editProjectsLayout.createSequentialGroup()
+                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(editProjectsLayout.createSequentialGroup()
+                                .addComponent(dueDateP)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(dueYearP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dueMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dueDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(editProjectsLayout.createSequentialGroup()
+                                .addComponent(assignedDatePLbl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(assignedYearP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(assignedMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(assignedDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(costUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addComponent(updateDateBtn)))
+                .addGap(71, 71, 71)
+                .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editProjectsLayout.createSequentialGroup()
+                        .addComponent(completionDateP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(completionYearP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(completionMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(completionDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editProjectsLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(completionStatusLbl)
+                            .addComponent(completionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(changeStatusBtn))
+                        .addGap(6, 6, 6)))
+                .addGap(98, 98, 98))
         );
 
         mainTabbedPane.addTab("Edit Projects", editProjects);
@@ -961,7 +1489,7 @@ return null;
         userForgetPnlLayout.setVerticalGroup(
             userForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userForgetPnlLayout.createSequentialGroup()
-                .addComponent(userForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addComponent(userForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -985,55 +1513,7 @@ return null;
         emailForgetPnlLayout.setVerticalGroup(
             emailForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(emailForgetPnlLayout.createSequentialGroup()
-                .addComponent(emailForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        passRForgetPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Re-enter Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-
-        passRForgetTxtFld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passRForgetTxtFldActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout passRForgetPnlLayout = new javax.swing.GroupLayout(passRForgetPnl);
-        passRForgetPnl.setLayout(passRForgetPnlLayout);
-        passRForgetPnlLayout.setHorizontalGroup(
-            passRForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, passRForgetPnlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(passRForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        passRForgetPnlLayout.setVerticalGroup(
-            passRForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(passRForgetPnlLayout.createSequentialGroup()
-                .addComponent(passRForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        passForgetPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-
-        passForgetTxtFld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passForgetTxtFldActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout passForgetPnlLayout = new javax.swing.GroupLayout(passForgetPnl);
-        passForgetPnl.setLayout(passForgetPnlLayout);
-        passForgetPnlLayout.setHorizontalGroup(
-            passForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, passForgetPnlLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(passForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        passForgetPnlLayout.setVerticalGroup(
-            passForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(passForgetPnlLayout.createSequentialGroup()
-                .addComponent(passForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addComponent(emailForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1045,6 +1525,65 @@ return null;
             }
         });
 
+        passRForgetPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Re-enter Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        javax.swing.GroupLayout passRForgetPnlLayout = new javax.swing.GroupLayout(passRForgetPnl);
+        passRForgetPnl.setLayout(passRForgetPnlLayout);
+        passRForgetPnlLayout.setHorizontalGroup(
+            passRForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passRForgetPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(passRForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        passRForgetPnlLayout.setVerticalGroup(
+            passRForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passRForgetPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(passRForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        passForgetPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        javax.swing.GroupLayout passForgetPnlLayout = new javax.swing.GroupLayout(passForgetPnl);
+        passForgetPnl.setLayout(passForgetPnlLayout);
+        passForgetPnlLayout.setHorizontalGroup(
+            passForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passForgetPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(passForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        passForgetPnlLayout.setVerticalGroup(
+            passForgetPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passForgetPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(passForgetTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout passEnterPnlLayout = new javax.swing.GroupLayout(passEnterPnl);
+        passEnterPnl.setLayout(passEnterPnlLayout);
+        passEnterPnlLayout.setHorizontalGroup(
+            passEnterPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passEnterPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(passForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(passEnterPnlLayout.createSequentialGroup()
+                .addComponent(passRForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        passEnterPnlLayout.setVerticalGroup(
+            passEnterPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, passEnterPnlLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(passForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(passRForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         backForgetBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         backForgetBtn.setText("Back");
         backForgetBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -1053,62 +1592,90 @@ return null;
             }
         });
 
+        validateBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        validateBtn.setText("Validate");
+        validateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validateBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(validateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 8, Short.MAX_VALUE)
+                .addComponent(validateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout forgetPassPnlLayout = new javax.swing.GroupLayout(forgetPassPnl);
         forgetPassPnl.setLayout(forgetPassPnlLayout);
         forgetPassPnlLayout.setHorizontalGroup(
             forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, forgetPassPnlLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(passRForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(515, 515, 515))
             .addGroup(forgetPassPnlLayout.createSequentialGroup()
                 .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(forgetPassPnlLayout.createSequentialGroup()
-                        .addGap(413, 413, 413)
-                        .addComponent(forgetInfoPnl))
-                    .addGroup(forgetPassPnlLayout.createSequentialGroup()
                         .addGap(291, 291, 291)
-                        .addComponent(userForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)
-                        .addComponent(emailForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(forgetPassPnlLayout.createSequentialGroup()
-                        .addGap(624, 624, 624)
-                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(135, 135, 135)
-                        .addComponent(backForgetBtn))
+                        .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(forgetPassPnlLayout.createSequentialGroup()
+                                .addComponent(userForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(forgetPassPnlLayout.createSequentialGroup()
+                                .addComponent(emailForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, forgetPassPnlLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(122, 122, 122)))
+                .addComponent(passEnterPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
+            .addGroup(forgetPassPnlLayout.createSequentialGroup()
+                .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(forgetPassPnlLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(forgetPassLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 1372, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(forgetPassLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 1372, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(forgetPassPnlLayout.createSequentialGroup()
+                        .addGap(503, 503, 503)
+                        .addComponent(forgetInfoPnl)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, forgetPassPnlLayout.createSequentialGroup()
-                    .addContainerGap(567, Short.MAX_VALUE)
-                    .addComponent(passForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(516, 516, 516)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, forgetPassPnlLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backForgetBtn)
+                .addGap(345, 345, 345))
         );
         forgetPassPnlLayout.setVerticalGroup(
             forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(forgetPassPnlLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(forgetPassLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(forgetInfoPnl)
-                .addGap(73, 73, 73)
                 .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(128, 128, 128)
-                .addComponent(passRForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backForgetBtn))
-                .addContainerGap(221, Short.MAX_VALUE))
-            .addGroup(forgetPassPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(forgetPassPnlLayout.createSequentialGroup()
-                    .addGap(296, 296, 296)
-                    .addComponent(passForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(392, Short.MAX_VALUE)))
+                    .addGroup(forgetPassPnlLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(passEnterPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(forgetPassPnlLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(userForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(emailForgetPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(backForgetBtn)
+                .addGap(144, 144, 144))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1172,17 +1739,11 @@ return null;
 
         passPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        passLogInTxtFld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passLogInTxtFldActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout passPnlLayout = new javax.swing.GroupLayout(passPnl);
         passPnl.setLayout(passPnlLayout);
         passPnlLayout.setHorizontalGroup(
             passPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, passPnlLayout.createSequentialGroup()
+            .addGroup(passPnlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(passLogInTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1190,7 +1751,8 @@ return null;
         passPnlLayout.setVerticalGroup(
             passPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(passPnlLayout.createSequentialGroup()
-                .addComponent(passLogInTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(passLogInTxtFld, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1281,10 +1843,6 @@ return null;
         // TODO add your handling code here:
     }//GEN-LAST:event_userLogInTxtFldActionPerformed
 
-    private void passLogInTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passLogInTxtFldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passLogInTxtFldActionPerformed
-
     private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInBtnActionPerformed
         // TODO add your handling code here:
         
@@ -1318,6 +1876,7 @@ return null;
                                     javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                     );
+                    passEnterPnl.setVisible(false);
         }else{
         String userName = userLogInTxtFld.getText();
         String passwordLogIn = String.valueOf(passLogInTxtFld.getText());
@@ -1515,8 +2074,8 @@ return null;
                 String project = set.getString("project_name");
                 String assignedDate = set.getString("assigned_date");
                 String dueDate = set.getString("due_date");
-                //String completedDate = set.getString("completed_Date")
-                //String completedRow[] = {project, teamLead, completedDate};
+                String completedDate = set.getString("completion_Date");
+                String completedRow[] = {project, teamLead, completedDate};
                 String row[] = {project, teamLead, assignedDate, dueDate};
                 String status = set.getString("completion_status");
                 switch (status) {
@@ -1535,7 +2094,7 @@ return null;
                     case "Done":
                         {
                             
-                            done.addRow(row);
+                            done.addRow(completedRow);
                             break;
                         }
                     default:
@@ -1597,8 +2156,9 @@ return null;
     }//GEN-LAST:event_dueDayRActionPerformed
 
     private void registerBtnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnRActionPerformed
-        // TODO add your handling code here:
-        
+     // TODO add your handling code here:
+        try{
+            Connection conn = setConnection();
         //getting the text from from text fields
         String teamLead = userRegisterTxtFld.getText();
         String password = passRegisterTxtFld.getText();
@@ -1610,6 +2170,17 @@ return null;
         String assignedDate = assignedYearR.getSelectedItem().toString() + "/" + assignedMonthR.getSelectedItem().toString() + "/" + assignedDayR.getSelectedItem().toString();
         String dueDate = dueYearR.getSelectedItem().toString() + "/" + dueMonthR.getSelectedItem().toString() + "/" + dueDayR.getSelectedItem().toString();
         
+        PreparedStatement stm = conn.prepareStatement("SELECT * FROM registered_users");
+        ResultSet emailSet = stm.executeQuery();
+        boolean exists = false;
+        while(emailSet.next()){
+            String emailDB = emailSet.getString("email");
+            if(email.equals(emailDB)){
+                exists = true;
+                break;
+            }
+        }
+        if(!exists){
         String encryptedPass = "";
         try{
             encryptedPass = encrypt(teamLead, password);
@@ -1624,8 +2195,7 @@ return null;
         }
         
         //connection with database
-        try{
-            Connection conn = setConnection();
+        
             PreparedStatement stmP = conn.prepareStatement("INSERT into registered_projects(project_name, assigned_date, due_date, completion_status,cost,team_lead, department)"
                     + "VALUES(?,?,?,?,?,?,?)");
             stmP.setString(1, project);
@@ -1652,10 +2222,15 @@ return null;
                 JOptionPane.showMessageDialog(registerPnl, "Project cannot be registered at the moment.", "Error", JOptionPane.ERROR_MESSAGE);
 
             }
-            
-        }catch(SQLException e){
-            System.out.println("Error: " + e.getMessage());
-        }
+        
+        }else{
+            JOptionPane.showMessageDialog(registerPnl, "Please provide a valid email." ,"Error", JOptionPane.ERROR_MESSAGE);
+
+                }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(registerPnl, "Please provide valid credentials." ,"Error", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }  
 //        String londonMetId = LondonIDTextField.getText();
 //        if (!londonMetId.isEmpty()) {
 //            try {
@@ -1721,67 +2296,13 @@ return null;
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        registerPnl.setVisible(false);
-        logInPnl.setVisible(true);
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                    getContentPane().setLayout(layout);
-                    layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 559, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(logInPnl,
-                                    javax.swing.GroupLayout.PREFERRED_SIZE,
-                                    javax.swing.GroupLayout.DEFAULT_SIZE,
-                                    javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                    );
-                    layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 382, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(logInPnl,
-                                    javax.swing.GroupLayout.PREFERRED_SIZE,
-                                    javax.swing.GroupLayout.DEFAULT_SIZE,
-                                    javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                    );
+        backToLogIn(registerPnl);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
         // TODO add your handling code here:
-        mainPnl.setVisible(false);
-        logInPnl.setVisible(true);
-        //errorMessageLbl.setVisible(false);
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logInPnl,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logInPnl,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        backToLogIn(mainPnl);
+       
     }//GEN-LAST:event_logOutBtnActionPerformed
 
     private void jScrollBar1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollBar1MouseWheelMoved
@@ -1805,70 +2326,334 @@ return null;
                 extractTablesUsers();
                 break;
             case 3:
-                System.out.println("View Projects");
+                System.out.println("View Profile");
+                generateProfile();
                 break;
             case 4:
-                System.out.println("Home");
+                System.out.println("Edit Projects");
+                generateProjectTable();
                 break;
         }
     }//GEN-LAST:event_mainTabbedPaneStateChanged
-
+    
+    private void generateProjectTable(){
+        try {
+            Connection conn = setConnection();
+            PreparedStatement stm = conn.prepareStatement("SELECT * FROM registered_projects");
+            ResultSet set = stm.executeQuery();
+            DefaultTableModel table = (DefaultTableModel) editProjectsTbl.getModel();
+            table.setRowCount(0);
+            while(set.next()){
+                String project = set.getString("project_name");
+                String teamLead = set.getString("team_lead");
+                String assignedDate = set.getString("assigned_date");
+                String dueDate = set.getString("due_date");
+                String status = set.getString("completion_status");
+                String completionDate = set.getString("completion_date");
+                String department = set.getString("department");
+                String cost = set.getString("cost");
+                String[] row = {project, teamLead, department, assignedDate, dueDate,status, completionDate,cost};
+                table.addRow(row);
+                        
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void generateProfile(){
+        try{
+        //getting the team_lead and password from the log in page
+        String userName = userLogInTxtFld.getText();
+        char[] passwordInArr = passLogInTxtFld.getPassword();
+        String password = "";
+        for(char each: passwordInArr){
+            password += each;
+        }
+            System.out.println(password);
+        
+        Connection conn = setConnection();
+        PreparedStatement stm = conn.prepareStatement("SELECT * FROM registered_users WHERE team_lead = ?");
+        stm.setString(1, userName);
+        ResultSet set = stm.executeQuery();
+            System.out.println(set);
+        String team_lead = null, email = null, department = null, number = null;
+        while(set.next()){
+            String passwordDB = decrypt(set.getString("team_lead"),set.getString("password"));
+            if(passwordDB.equals(password)){
+                team_lead = set.getString("team_lead");
+                email = set.getString("email");
+                department = set.getString("department");
+                number = set.getString("mobile_number");
+            }
+        }
+        userNameDisplay.setText(team_lead);
+        emailDisplay.setText(email);
+        departmentDisplay.setText(department);
+        numberDisplay.setText(number);
+        yourNameUpdate.setText(team_lead);
+        }catch(SQLException e){
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     private void mobileRegisterTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobileRegisterTxtFldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mobileRegisterTxtFldActionPerformed
 
-    private void userForgetTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userForgetTxtFldActionPerformed
+    private void validateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userForgetTxtFldActionPerformed
+        try{
+        String userName = userForgetTxtFld.getText();
+        String email = emailForgetTxtFld.getText();
+        Connection conn = setConnection();
+        PreparedStatement stm = conn.prepareStatement("SELECT * FROM registered_users");
+        ResultSet set = stm.executeQuery();
+        boolean exists = false; 
+        while(set.next()){
+            String team_lead = set.getString("team_lead");
+            String emailDB = set.getString("email");
+            if(userName.equals(team_lead) && email.equals(emailDB)){
+                validateBtn.setVisible(false);
+                passEnterPnl.setVisible(true);
+                exists = true;
+            }
+        }
+        if(!exists){
+            JOptionPane.showMessageDialog(forgetPassPnl, "Please enter valid credentials.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        }catch(SQLException e){
+            System.out.println("Error:" + e.getMessage());
+        }
+    }//GEN-LAST:event_validateBtnActionPerformed
+
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        // TODO add your handling code here:
+        try{
+            String userName = userForgetTxtFld.getText();
+            String email = emailForgetTxtFld.getText();
+            String newPass = passForgetTxtFld.getText();
+            String reEnterPass = passRForgetTxtFld.getText();
+            boolean checkEqual = false;
+            if(newPass.equals(reEnterPass)){
+                checkEqual = true;
+            }
+            if(checkEqual){
+            Connection conn = setConnection();
+            PreparedStatement stm = conn.prepareStatement("UPDATE registered_users SET password = ? where email = ?");
+                try {
+                    stm.setString(1, encrypt(userName, newPass));
+                } catch (Exception ex) {
+                    Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            stm.setString(2, email);
+            int set = stm.executeUpdate();
+            if(set == 1){
+                JOptionPane.showMessageDialog(forgetPassPnl, "Your password has been updated.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                backToLogIn(forgetPassPnl);
+            }
+            } else {
+                JOptionPane.showMessageDialog(forgetPassPnl, "The re-entered password doesnot match. Please enter valid password.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }catch(SQLException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void backForgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backForgetBtnActionPerformed
+        // TODO add your handling code here:
+        backToLogIn(forgetPassPnl);
+        
+    }//GEN-LAST:event_backForgetBtnActionPerformed
 
     private void emailForgetTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailForgetTxtFldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailForgetTxtFldActionPerformed
 
-    private void passRForgetTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passRForgetTxtFldActionPerformed
+    private void userForgetTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userForgetTxtFldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passRForgetTxtFldActionPerformed
+    }//GEN-LAST:event_userForgetTxtFldActionPerformed
 
-    private void passForgetTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passForgetTxtFldActionPerformed
+    private void emailUpdateTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailUpdateTxtFldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passForgetTxtFldActionPerformed
+    }//GEN-LAST:event_emailUpdateTxtFldActionPerformed
 
-    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+    private void numberUpdateTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberUpdateTxtFldActionPerformed
         // TODO add your handling code here:
-        //String userName = userForgetTxtFld.
-    }//GEN-LAST:event_submitBtnActionPerformed
+    }//GEN-LAST:event_numberUpdateTxtFldActionPerformed
 
-    private void backForgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backForgetBtnActionPerformed
+    private void departmentUpdateTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departmentUpdateTxtFldActionPerformed
         // TODO add your handling code here:
-        forgetPassPnl.setVisible(false);
-        logInPnl.setVisible(true);
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logInPnl,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logInPnl,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-    }//GEN-LAST:event_backForgetBtnActionPerformed
+    }//GEN-LAST:event_departmentUpdateTxtFldActionPerformed
+
+    private void updateInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInfoBtnActionPerformed
+        try {
+            // TODO add your handling code here:
+            String emailDB = emailDisplay.getText();
+            String emailUpdate = emailUpdateTxtFld.getText();
+            String phoneNumber = numberUpdateTxtFld.getText();
+            String department = departmentUpdateTxtFld.getText();
+            Connection conn = setConnection();
+            PreparedStatement stm = conn.prepareStatement("UPDATE registered_users SET email = ?, mobile_number = ?, department = ? WHERE email = ?");
+            stm.setString(1, emailUpdate);
+            stm.setString(2, phoneNumber);
+            stm.setString(3, department);
+            stm.setString(4, emailDB);
+            int set = stm.executeUpdate();
+            if(set == 1){
+                JOptionPane.showMessageDialog(profilePage, "The info has been updated.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                generateProfile();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_updateInfoBtnActionPerformed
+
+    private void assignedYearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignedYearPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assignedYearPActionPerformed
+
+    private void assignedMonthPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignedMonthPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assignedMonthPActionPerformed
+
+    private void assignedDayPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignedDayPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_assignedDayPActionPerformed
+
+    private void dueYearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dueYearPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dueYearPActionPerformed
+
+    private void dueMonthPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dueMonthPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dueMonthPActionPerformed
+
+    private void dueDayPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dueDayPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dueDayPActionPerformed
+
+    private void costUpdateTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costUpdateTxtFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_costUpdateTxtFldActionPerformed
+
+    private void updateDateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDateBtnActionPerformed
+        try {
+            // TODO add your handling code here:
+            String projectName = projectDisplayLbl.getText();
+            String newAssignedDate = assignedYearP.getSelectedItem().toString() + "/" + assignedMonthP.getSelectedItem().toString() + "/" + assignedDayP.getSelectedItem().toString();
+            String newDueDate = dueYearP.getSelectedItem().toString() + "/" + dueMonthP.getSelectedItem().toString() + "/" + dueDayP.getSelectedItem().toString();
+            String newCost = costUpdateTxtFld.getText();
+            
+            Connection conn = setConnection();
+            PreparedStatement stm = conn.prepareStatement("UPDATE registered_projects SET assigned_date = ?, due_date = ?, cost = ? WHERE project_name = ?");
+            stm.setString(1, newAssignedDate);
+            stm.setString(2, newDueDate);
+            stm.setString(3, newCost);
+            stm.setString(4, projectName);
+            int set = stm.executeUpdate();
+            if(set == 1){
+                JOptionPane.showMessageDialog(editProjects, "The project has been updated.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                generateProjectTable();
+            }else{
+                JOptionPane.showMessageDialog(editProjects, "The project cannot be updated.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(editProjects, "We are experiencing problem while connecting to database. Please try again later.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_updateDateBtnActionPerformed
+
+    private void completionYearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completionYearPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_completionYearPActionPerformed
+
+    private void completionMonthPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completionMonthPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_completionMonthPActionPerformed
+
+    private void completionDayPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completionDayPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_completionDayPActionPerformed
+
+    private void changeStatusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeStatusBtnActionPerformed
+        // TODO add your handling code here:
+       String projectName = projectDisplayLbl.getText();
+       String completionDate = completionYearP.getSelectedItem().toString() + "/" + completionMonthP.getSelectedItem().toString() + "/" + completionDayP.getSelectedItem().toString();
+       String completionStatus = completionComboBox.getSelectedItem().toString();
+       if(completionStatus.equals("Done")){
+           try {
+               Connection conn = setConnection();
+               PreparedStatement stm = conn.prepareStatement("UPDATE registered_projects SET completion_status = ?, completion_date =?, due_date = ? WHERE project_name = ?");
+               stm.setString(1, completionStatus);
+               stm.setString(2, completionDate);
+               stm.setString(3, "");
+               stm.setString(4, projectName);
+               int set = stm.executeUpdate();
+               if(set == 1){
+                JOptionPane.showMessageDialog(editProjects, "The project's status has been updated.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                generateProjectTable();
+               }
+               
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(editProjects, "The project's cannot be updated", "Error", JOptionPane.ERROR_MESSAGE);
+               Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+       } else{
+           try {
+               Connection conn = setConnection();
+               PreparedStatement stm = conn.prepareStatement("UPDATE registered_projects SET completion_status = ? WHERE project_name = ?");
+               stm.setString(1, completionStatus);
+               stm.setString(2, projectName);
+               int set = stm.executeUpdate();
+               if(set == 1){
+                JOptionPane.showMessageDialog(editProjects, "The project's status has been updated.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                generateProjectTable();
+               }
+           } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(editProjects, "The project's cannot be updated", "Error", JOptionPane.ERROR_MESSAGE);
+               Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
+    }//GEN-LAST:event_changeStatusBtnActionPerformed
+
+    private void editProjectsTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProjectsTblMouseClicked
+        // TODO add your handling code here:
+        this.selectedRow = editProjectsTbl.getSelectedRow();
+        String projectName = editProjectsTbl.getValueAt(selectedRow, 0).toString();
+        String teamLead = editProjectsTbl.getValueAt(selectedRow, 1).toString();
+        String department = editProjectsTbl.getValueAt(selectedRow, 2).toString();
+        String assignedDate = editProjectsTbl.getValueAt(selectedRow, 3).toString();
+        String dueDate = editProjectsTbl.getValueAt(selectedRow, 4).toString();
+        String cost = editProjectsTbl.getValueAt(selectedRow, 7).toString();
+        
+        String[] aDates = assignedDate.split("/");
+        System.out.println(Arrays.toString(aDates));
+        assignedYearP.setSelectedItem(aDates[0]);
+        assignedMonthP.setSelectedItem(aDates[1]);
+        assignedDayP.setSelectedItem(aDates[2]);
+        
+        String[] dDates = dueDate.split("/");
+        dueYearP.setSelectedItem(dDates[0]);
+        dueMonthP.setSelectedItem(dDates[1]);
+        dueDayP.setSelectedItem(dDates[2]);
+        
+        projectDisplayLbl.setText(projectName);
+        teamLeadDisplayLbl.setText(teamLead);
+        departmentDisplayLbl.setText(department);
+        
+        costUpdateTxtFld.setText(cost);
+        
+    }//GEN-LAST:event_editProjectsTblMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1907,15 +2692,33 @@ return null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assignedDateLbl;
+    private javax.swing.JLabel assignedDatePLbl;
+    private javax.swing.JComboBox<String> assignedDayP;
     private javax.swing.JComboBox<String> assignedDayR;
+    private javax.swing.JComboBox<String> assignedMonthP;
     private javax.swing.JComboBox<String> assignedMonthR;
+    private javax.swing.JComboBox<String> assignedYearP;
     private javax.swing.JComboBox<String> assignedYearR;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton backForgetBtn;
+    private javax.swing.JButton changeStatusBtn;
+    private javax.swing.JComboBox<String> completionComboBox;
+    private javax.swing.JLabel completionDateP;
+    private javax.swing.JComboBox<String> completionDayP;
+    private javax.swing.JComboBox<String> completionMonthP;
+    private javax.swing.JLabel completionStatusLbl;
+    private javax.swing.JComboBox<String> completionYearP;
     private javax.swing.JPanel costRegisterPnl;
     private javax.swing.JTextField costRegisterTxtFld;
+    private javax.swing.JPanel costUpdatePnl;
+    private javax.swing.JTextField costUpdateTxtFld;
     private javax.swing.JPanel departRegisterPnl;
     private javax.swing.JTextField departRegisterTxtFld;
+    private javax.swing.JLabel departmentDisplay;
+    private javax.swing.JLabel departmentDisplayLbl;
+    private javax.swing.JLabel departmentLbl;
+    private javax.swing.JPanel departmentUpdatePnl;
+    private javax.swing.JTextField departmentUpdateTxtFld;
     private javax.swing.JLabel doingLbl;
     private javax.swing.JScrollPane doingPane;
     private javax.swing.JPanel doingPnl;
@@ -1925,14 +2728,25 @@ return null;
     private javax.swing.JPanel donePnl;
     private javax.swing.JTable doneTbl;
     private javax.swing.JLabel dueDateLbl;
+    private javax.swing.JLabel dueDateP;
+    private javax.swing.JComboBox<String> dueDayP;
     private javax.swing.JComboBox<String> dueDayR;
+    private javax.swing.JComboBox<String> dueMonthP;
     private javax.swing.JComboBox<String> dueMonthR;
+    private javax.swing.JComboBox<String> dueYearP;
     private javax.swing.JComboBox<String> dueYearR;
     private javax.swing.JPanel editProjects;
+    private javax.swing.JTable editProjectsTbl;
+    private javax.swing.JLabel emailDisplay;
     private javax.swing.JPanel emailForgetPnl;
     private javax.swing.JTextField emailForgetTxtFld;
+    private javax.swing.JLabel emailLbl;
+    private javax.swing.JLabel emailLbl1;
+    private javax.swing.JLabel emailLbl2;
     private javax.swing.JPanel emailRegisterPnl;
     private javax.swing.JTextField emailRegisterTxtFld;
+    private javax.swing.JPanel emailUpdatePnl;
+    private javax.swing.JTextField emailUpdateTxtFld;
     private javax.swing.JLabel forgetInfoPnl;
     private javax.swing.JLabel forgetPassLbl;
     private javax.swing.JPanel forgetPassPnl;
@@ -1941,10 +2755,14 @@ return null;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logInBtn;
     private javax.swing.JLabel logInLbl;
     private javax.swing.JPanel logInPnl;
@@ -1957,15 +2775,23 @@ return null;
     private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JPanel mobileRegisterPnl;
     private javax.swing.JTextField mobileRegisterTxtFld;
+    private javax.swing.JLabel nameLbl;
+    private javax.swing.JLabel nameLbl1;
+    private javax.swing.JLabel numberDisplay;
+    private javax.swing.JPanel numberUpdatePnl;
+    private javax.swing.JTextField numberUpdateTxtFld;
+    private javax.swing.JPanel passEnterPnl;
     private javax.swing.JPanel passForgetPnl;
-    private javax.swing.JTextField passForgetTxtFld;
-    private javax.swing.JTextField passLogInTxtFld;
+    private javax.swing.JPasswordField passForgetTxtFld;
+    private javax.swing.JPasswordField passLogInTxtFld;
     private javax.swing.JPanel passPnl;
     private javax.swing.JPanel passRForgetPnl;
-    private javax.swing.JTextField passRForgetTxtFld;
+    private javax.swing.JPasswordField passRForgetTxtFld;
     private javax.swing.JPanel passRegisterPnl;
     private javax.swing.JTextField passRegisterTxtFld;
     private javax.swing.JPanel profilePage;
+    private javax.swing.JLabel projectDisplayLbl;
+    private javax.swing.JLabel projectLbl;
     private javax.swing.JPanel projectRegisterPnl;
     private javax.swing.JTextField projectRegisterTxtFld;
     private javax.swing.JPanel projectsPage;
@@ -1975,19 +2801,60 @@ return null;
     private javax.swing.JPanel registerPnl;
     private javax.swing.JLabel registerProjectLbl;
     private javax.swing.JButton submitBtn;
+    private javax.swing.JLabel teamLeadDisplayLbl;
+    private javax.swing.JLabel teamLeadLbl;
     private javax.swing.JLabel toDoLbl;
     private javax.swing.JScrollPane toDoPane;
     private javax.swing.JPanel toDoPnl;
     private javax.swing.JTable toDoTbl;
+    private javax.swing.JButton updateDateBtn;
+    private javax.swing.JButton updateInfoBtn;
+    private javax.swing.JLabel updateProjectLbl;
     private javax.swing.JPanel userForgetPnl;
     private javax.swing.JTextField userForgetTxtFld;
     private javax.swing.JTextField userLogInTxtFld;
+    private javax.swing.JLabel userNameDisplay;
     private javax.swing.JPanel userNamePnl;
     private javax.swing.JPanel userRegisterPnl;
     private javax.swing.JTextField userRegisterTxtFld;
     private javax.swing.JTable usersInfoTbl;
     private javax.swing.JPanel usersPage;
+    private javax.swing.JButton validateBtn;
+    private javax.swing.JLabel yourNameUpdate;
     // End of variables declaration//GEN-END:variables
+
+
+    private void backToLogIn(JPanel panel) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        panel.setVisible(false);
+        logInPnl.setVisible(true);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 559, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logInPnl,
+                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 382, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logInPnl,
+                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+    }
 
     
 
