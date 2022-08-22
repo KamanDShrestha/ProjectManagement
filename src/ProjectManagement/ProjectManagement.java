@@ -30,6 +30,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -242,6 +243,8 @@ return null;
         numberUpdatePnl = new javax.swing.JPanel();
         numberUpdateTxtFld = new javax.swing.JTextField();
         updateInfoBtn = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        profilePhoto = new javax.swing.JLabel();
         editProjects = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         editProjectsTbl = new javax.swing.JTable();
@@ -270,6 +273,7 @@ return null;
         completionMonthP = new javax.swing.JComboBox<>();
         completionDayP = new javax.swing.JComboBox<>();
         changeStatusBtn = new javax.swing.JButton();
+        deleteProjectBtn = new javax.swing.JButton();
         forgetPassPnl = new javax.swing.JPanel();
         forgetPassLbl = new javax.swing.JLabel();
         forgetInfoPnl = new javax.swing.JLabel();
@@ -1060,6 +1064,27 @@ return null;
             }
         });
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 149, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(profilePhoto)
+                    .addContainerGap(99, Short.MAX_VALUE)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 143, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(profilePhoto)
+                    .addContainerGap(93, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout profilePageLayout = new javax.swing.GroupLayout(profilePage);
         profilePage.setLayout(profilePageLayout);
         profilePageLayout.setHorizontalGroup(
@@ -1074,7 +1099,9 @@ return null;
                         .addGap(30, 30, 30)
                         .addComponent(departmentUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(profilePageLayout.createSequentialGroup()
-                        .addGap(361, 361, 361)
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 200, 200)
                         .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addGroup(profilePageLayout.createSequentialGroup()
@@ -1104,20 +1131,23 @@ return null;
             profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(profilePageLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameLbl1)
-                    .addComponent(userNameDisplay))
-                .addGap(14, 14, 14)
-                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailLbl1)
-                    .addComponent(emailDisplay))
-                .addGap(18, 18, 18)
-                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailLbl)
-                    .addComponent(numberDisplay))
-                .addGap(18, 18, 18)
+                .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(profilePageLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameLbl1)
+                            .addComponent(userNameDisplay))
+                        .addGap(7, 7, 7)
+                        .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailLbl1)
+                            .addComponent(emailDisplay))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailLbl)
+                            .addComponent(numberDisplay)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(profilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLbl2)
                     .addComponent(departmentDisplay))
@@ -1134,7 +1164,7 @@ return null;
                     .addComponent(numberUpdatePnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(updateInfoBtn)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Profile Page", profilePage);
@@ -1316,6 +1346,16 @@ return null;
             }
         });
 
+        deleteProjectBtn.setBackground(new java.awt.Color(51, 51, 51));
+        deleteProjectBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        deleteProjectBtn.setForeground(new java.awt.Color(204, 204, 204));
+        deleteProjectBtn.setText("Delete Project");
+        deleteProjectBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteProjectBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout editProjectsLayout = new javax.swing.GroupLayout(editProjects);
         editProjects.setLayout(editProjectsLayout);
         editProjectsLayout.setHorizontalGroup(
@@ -1359,13 +1399,19 @@ return null;
                                 .addGap(18, 18, 18)
                                 .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(editProjectsLayout.createSequentialGroup()
-                                        .addComponent(dueMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(dueDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(dueDateP))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(costUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)))))
+                                        .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(editProjectsLayout.createSequentialGroup()
+                                                .addComponent(dueMonthP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(dueDayP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(dueDateP))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(costUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(77, 77, 77))
+                                    .addGroup(editProjectsLayout.createSequentialGroup()
+                                        .addGap(171, 171, 171)
+                                        .addComponent(deleteProjectBtn)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addContainerGap())
             .addGroup(editProjectsLayout.createSequentialGroup()
                 .addGap(292, 292, 292)
@@ -1424,7 +1470,9 @@ return null;
                             .addComponent(costUpdatePnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(updateDateBtn)))
-                .addGap(71, 71, 71)
+                .addGap(15, 15, 15)
+                .addComponent(deleteProjectBtn)
+                .addGap(25, 25, 25)
                 .addGroup(editProjectsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(editProjectsLayout.createSequentialGroup()
                         .addComponent(completionDateP)
@@ -2059,7 +2107,7 @@ return null;
         //throw new UnsupportedOperationException("Not supported yet.");// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         try{
             Connection conn = setConnection();
-            PreparedStatement stm = conn.prepareStatement("SELECT team_lead, project_name, assigned_date, due_date, completion_status FROM registered_projects");
+            PreparedStatement stm = conn.prepareStatement("SELECT team_lead, project_name, assigned_date, due_date, completion_status, completion_date FROM registered_projects");
             ResultSet set = stm.executeQuery();
             DefaultTableModel toDo = (DefaultTableModel)toDoTbl.getModel();
             DefaultTableModel doing = (DefaultTableModel)doingTbl.getModel();
@@ -2074,7 +2122,7 @@ return null;
                 String project = set.getString("project_name");
                 String assignedDate = set.getString("assigned_date");
                 String dueDate = set.getString("due_date");
-                String completedDate = set.getString("completion_Date");
+                String completedDate = set.getString("completion_date");
                 String completedRow[] = {project, teamLead, completedDate};
                 String row[] = {project, teamLead, assignedDate, dueDate};
                 String status = set.getString("completion_status");
@@ -2195,19 +2243,8 @@ return null;
         }
         
         //connection with database
-        
-            PreparedStatement stmP = conn.prepareStatement("INSERT into registered_projects(project_name, assigned_date, due_date, completion_status,cost,team_lead, department)"
-                    + "VALUES(?,?,?,?,?,?,?)");
-            stmP.setString(1, project);
-            stmP.setString(2, assignedDate);
-            stmP.setString(3, dueDate);
-            stmP.setString(4, "To Do");
-            stmP.setString(5, cost);
-            stmP.setString(6, teamLead);
-            stmP.setString(7, department);
-            int registerP = stmP.executeUpdate();
             
-            PreparedStatement stmU = conn.prepareStatement("INSERT into registered_users(team_lead,email, password, department,mobile_number)"
+             PreparedStatement stmU = conn.prepareStatement("INSERT into registered_users(team_lead,email, password, department,mobile_number)"
                     + "VALUES(?,?,?,?,?)");
             stmU.setString(1, teamLead);
             stmU.setString(2, email);
@@ -2216,7 +2253,29 @@ return null;
             stmU.setString(5, mobile);
             int registerU = stmU.executeUpdate();
             
+            PreparedStatement stmId = conn.prepareStatement("SELECT id FROM registered_users WHERE email = ?");
+            stmId.setString(1, email);
+            ResultSet set = stmId.executeQuery();
+            String userId = null;
+            while(set.next()){
+                userId = set.getString("id");
+            }
+            PreparedStatement stmP = conn.prepareStatement("INSERT into registered_projects(project_name, assigned_date, due_date, completion_status,cost,team_lead, department, user_id)"
+                    + "VALUES(?,?,?,?,?,?,?,?)");
+            stmP.setString(1, project);
+            stmP.setString(2, assignedDate);
+            stmP.setString(3, dueDate);
+            stmP.setString(4, "To Do");
+            stmP.setString(5, cost);
+            stmP.setString(6, teamLead);
+            stmP.setString(7, department);
+            stmP.setString(8, userId);
+            int registerP = stmP.executeUpdate();
+            
+           
+            
             if(registerP == 1 && registerU == 1 ){
+                clearTextFields();
                 JOptionPane.showMessageDialog(registerPnl, "Project has successfully been registered.", "Registered", JOptionPane.INFORMATION_MESSAGE);
             }else {
                 JOptionPane.showMessageDialog(registerPnl, "Project cannot be registered at the moment.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -2297,12 +2356,16 @@ return null;
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         backToLogIn(registerPnl);
+        
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
         // TODO add your handling code here:
         backToLogIn(mainPnl);
-       
+        userLogInTxtFld.setText("");
+        passLogInTxtFld.setText("");
+        forgetPasswordRadio.setSelected(false);
+        
     }//GEN-LAST:event_logOutBtnActionPerformed
 
     private void jScrollBar1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jScrollBar1MouseWheelMoved
@@ -2378,14 +2441,17 @@ return null;
         stm.setString(1, userName);
         ResultSet set = stm.executeQuery();
             System.out.println(set);
-        String team_lead = null, email = null, department = null, number = null;
+        String team_lead = null, email = null, department = null, number = null, imageResource = null;
+        
         while(set.next()){
             String passwordDB = decrypt(set.getString("team_lead"),set.getString("password"));
             if(passwordDB.equals(password)){
                 team_lead = set.getString("team_lead");
+                System.out.println(team_lead);
                 email = set.getString("email");
                 department = set.getString("department");
                 number = set.getString("mobile_number");
+                imageResource = set.getString("user_image");
             }
         }
         userNameDisplay.setText(team_lead);
@@ -2393,6 +2459,13 @@ return null;
         departmentDisplay.setText(department);
         numberDisplay.setText(number);
         yourNameUpdate.setText(team_lead);
+            System.out.println(imageResource);
+//       profilePhoto.setIcon(profileImage);
+//        profileImage.getClass().getResource(imageResource); //what does getClass do //why doesnot it work like below
+//            System.out.println(profileImage);
+//        profilePhoto.setIcon(profileImage);
+        profilePhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource(imageResource))); // NOI18N
+
         }catch(SQLException e){
             System.out.println("Error: " + e.getMessage());
         } catch (Exception ex) {
@@ -2403,6 +2476,7 @@ return null;
     
     private void mobileRegisterTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobileRegisterTxtFldActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_mobileRegisterTxtFldActionPerformed
 
     private void validateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateBtnActionPerformed
@@ -2498,13 +2572,25 @@ return null;
             String phoneNumber = numberUpdateTxtFld.getText();
             String department = departmentUpdateTxtFld.getText();
             Connection conn = setConnection();
+            PreparedStatement stmID = conn.prepareStatement("SELECT id FROM registered_users where email = ?");
+            stmID.setString(1, emailDB);
+            ResultSet setID = stmID.executeQuery();
+            String userID = null;
+            while(setID.next()){
+                userID = setID.getString("id");
+            }
+            PreparedStatement stmDepart = conn.prepareStatement("UPDATE registered_projects SET department = ? WHERE user_id = ?");
+            stmDepart.setString(1, department);
+            stmDepart.setString(2, userID);
+            int setDepart = stmDepart.executeUpdate();
             PreparedStatement stm = conn.prepareStatement("UPDATE registered_users SET email = ?, mobile_number = ?, department = ? WHERE email = ?");
             stm.setString(1, emailUpdate);
             stm.setString(2, phoneNumber);
             stm.setString(3, department);
             stm.setString(4, emailDB);
             int set = stm.executeUpdate();
-            if(set == 1){
+            if(set == 1 && setDepart == 1){
+                clearTextFields();
                 JOptionPane.showMessageDialog(profilePage, "The info has been updated.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 generateProfile();
             }
@@ -2557,6 +2643,7 @@ return null;
             stm.setString(4, projectName);
             int set = stm.executeUpdate();
             if(set == 1){
+                clearTextFields();
                 JOptionPane.showMessageDialog(editProjects, "The project has been updated.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 generateProjectTable();
             }else{
@@ -2599,6 +2686,7 @@ return null;
                stm.setString(4, projectName);
                int set = stm.executeUpdate();
                if(set == 1){
+                clearTextFields();
                 JOptionPane.showMessageDialog(editProjects, "The project's status has been updated.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 generateProjectTable();
                }
@@ -2616,6 +2704,7 @@ return null;
                stm.setString(2, projectName);
                int set = stm.executeUpdate();
                if(set == 1){
+                clearTextFields();
                 JOptionPane.showMessageDialog(editProjects, "The project's status has been updated.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 generateProjectTable();
                }
@@ -2642,11 +2731,12 @@ return null;
         assignedMonthP.setSelectedItem(aDates[1]);
         assignedDayP.setSelectedItem(aDates[2]);
         
-        String[] dDates = dueDate.split("/");
-        dueYearP.setSelectedItem(dDates[0]);
-        dueMonthP.setSelectedItem(dDates[1]);
-        dueDayP.setSelectedItem(dDates[2]);
-        
+        if(!dueDate.equals("")){
+            String[] dDates = dueDate.split("/");
+            dueYearP.setSelectedItem(dDates[0]);
+            dueMonthP.setSelectedItem(dDates[1]);
+            dueDayP.setSelectedItem(dDates[2]);
+        }
         projectDisplayLbl.setText(projectName);
         teamLeadDisplayLbl.setText(teamLead);
         departmentDisplayLbl.setText(department);
@@ -2654,6 +2744,24 @@ return null;
         costUpdateTxtFld.setText(cost);
         
     }//GEN-LAST:event_editProjectsTblMouseClicked
+
+    private void deleteProjectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteProjectBtnActionPerformed
+        try {
+            // TODO add your handling code here:
+            String projectName = projectDisplayLbl.getText();
+            Connection conn = setConnection();
+            PreparedStatement stm = conn.prepareStatement("DELETE FROM registered_projects WHERE project_name =?");
+            stm.setString(1, projectName);
+            int set = stm.executeUpdate();
+            if(set == 1){
+                clearTextFields();
+                JOptionPane.showMessageDialog(editProjects, "The project has successfully been deleted.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                generateProjectTable();
+            }
+                    } catch (SQLException ex) {
+            Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_deleteProjectBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2712,6 +2820,7 @@ return null;
     private javax.swing.JTextField costRegisterTxtFld;
     private javax.swing.JPanel costUpdatePnl;
     private javax.swing.JTextField costUpdateTxtFld;
+    private javax.swing.JButton deleteProjectBtn;
     private javax.swing.JPanel departRegisterPnl;
     private javax.swing.JTextField departRegisterTxtFld;
     private javax.swing.JLabel departmentDisplay;
@@ -2760,6 +2869,7 @@ return null;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2790,6 +2900,7 @@ return null;
     private javax.swing.JPanel passRegisterPnl;
     private javax.swing.JTextField passRegisterTxtFld;
     private javax.swing.JPanel profilePage;
+    private javax.swing.JLabel profilePhoto;
     private javax.swing.JLabel projectDisplayLbl;
     private javax.swing.JLabel projectLbl;
     private javax.swing.JPanel projectRegisterPnl;
@@ -2823,7 +2934,33 @@ return null;
     private javax.swing.JLabel yourNameUpdate;
     // End of variables declaration//GEN-END:variables
 
-
+    private void clearTextFields(){
+        
+        //clearing edit projects
+        projectDisplayLbl.setText("Choose your project");
+        teamLeadDisplayLbl.setText("Team's lead name");
+        departmentDisplayLbl.setText("Department's name");
+        costUpdateTxtFld.setText("");
+        
+        //clearing log In Panel
+        
+        
+        //clearing register Panel
+        userRegisterTxtFld.setText("");
+        passRegisterTxtFld.setText("");
+        emailRegisterTxtFld.setText("");
+        mobileRegisterTxtFld.setText("");
+        departRegisterTxtFld.setText("");
+        projectRegisterTxtFld.setText("");
+        costRegisterTxtFld.setText("");
+        
+        //clearing profile update Text field
+        emailUpdateTxtFld.setText("");
+        numberUpdateTxtFld.setText("");
+        departmentUpdateTxtFld.setText("");
+        
+    }
+    
     private void backToLogIn(JPanel panel) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         panel.setVisible(false);
@@ -2854,9 +2991,5 @@ return null;
                         javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-    }
-
-    
-
-    
+    } 
 }
