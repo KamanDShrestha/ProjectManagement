@@ -208,6 +208,13 @@ return null;
         homePage = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         projectsPage = new javax.swing.JPanel();
         toDoPnl = new javax.swing.JPanel();
         toDoLbl = new javax.swing.JLabel();
@@ -225,6 +232,7 @@ return null;
         jScrollPane1 = new javax.swing.JScrollPane();
         usersInfoTbl = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        ProfilePane = new javax.swing.JScrollPane();
         profilePage = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         nameLbl = new javax.swing.JLabel();
@@ -721,11 +729,16 @@ return null;
         );
 
         mainTabbedPane.setBackground(new java.awt.Color(153, 153, 153));
+        mainTabbedPane.setOpaque(true);
+        mainTabbedPane.setPreferredSize(new java.awt.Dimension(1370, 700));
         mainTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 mainTabbedPaneStateChanged(evt);
             }
         });
+
+        homePage.setMinimumSize(new java.awt.Dimension(2000, 2000));
+        homePage.setPreferredSize(new java.awt.Dimension(1300, 1300));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectManagement/assests/scheduleL.jpg"))); // NOI18N
@@ -733,6 +746,25 @@ return null;
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Schedule your projects and find information related to the scheduled projects");
+
+        jLabel8.setText("jLabel8");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setText("For every projects, different team lead need to be registered. Each registered user can change the status of project. ");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("However, only the team lead who have registered their project can change them, other users cannot change them, other than 'Project Manager'.");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setText("In View Projects tab, you can find all  the registered projects, categorized on the basis of their status as To Do, Doing and Done.");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Users can view all the registered users in view users tab. Information related to their department, contact information etc are available for viewing.");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setText("Users can view their information in Profile page tab. Along with that, they can change their personal informtion.");
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectManagement/assests/complete.png"))); // NOI18N
 
         javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
         homePage.setLayout(homePageLayout);
@@ -742,23 +774,64 @@ return null;
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1363, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(homePageLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(821, Short.MAX_VALUE))
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jLabel7))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addGap(1280, 1280, 1280)
+                                .addComponent(jLabel8))
+                            .addComponent(jLabel10)))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabel13))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(585, 585, 585)
+                        .addComponent(jLabel15)))
+                .addContainerGap(537, Short.MAX_VALUE))
         );
         homePageLayout.setVerticalGroup(
             homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePageLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addGap(273, 273, 273))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         HomePane.setViewportView(homePage);
 
-        mainTabbedPane.addTab("tab6", HomePane);
+        mainTabbedPane.addTab("Home", HomePane);
 
         toDoLbl.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         toDoLbl.setText("To Do");
@@ -1184,7 +1257,9 @@ return null;
                 .addContainerGap(111, Short.MAX_VALUE))
         );
 
-        mainTabbedPane.addTab("Profile Page", profilePage);
+        ProfilePane.setViewportView(profilePage);
+
+        mainTabbedPane.addTab("Profile Page", ProfilePane);
 
         editProjectsTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2857,6 +2932,7 @@ return null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane HomePane;
+    private javax.swing.JScrollPane ProfilePane;
     private javax.swing.JLabel assignedDateLbl;
     private javax.swing.JLabel assignedDatePLbl;
     private javax.swing.JComboBox<String> assignedDayP;
@@ -2920,11 +2996,18 @@ return null;
     private javax.swing.JRadioButton forgetPasswordRadio;
     private javax.swing.JPanel homePage;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
