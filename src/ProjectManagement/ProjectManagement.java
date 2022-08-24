@@ -2399,27 +2399,58 @@ return null;
         }
     }//GEN-LAST:event_mainTabbedPaneStateChanged
     
+    
     private void generateProjectTable(){
         try {
             Connection conn = setConnection();
-            PreparedStatement stm = conn.prepareStatement("SELECT * FROM registered_projects");
-            ResultSet set = stm.executeQuery();
+            String validEmail = emailDisplay.getText();
             DefaultTableModel table = (DefaultTableModel) editProjectsTbl.getModel();
-            table.setRowCount(0);
-            while(set.next()){
-                String project = set.getString("project_name");
-                String teamLead = set.getString("team_lead");
-                String assignedDate = set.getString("assigned_date");
-                String dueDate = set.getString("due_date");
-                String status = set.getString("completion_status");
-                String completionDate = set.getString("completion_date");
-                String department = set.getString("department");
-                String cost = set.getString("cost");
-                String[] row = {project, teamLead, department, assignedDate, dueDate,status, completionDate,cost};
-                table.addRow(row);
-                        
+            if(validEmail.equals("projectmanaging@manager.com")){
+                PreparedStatement stm = conn.prepareStatement("SELECT * FROM registered_projects");
+                ResultSet set = stm.executeQuery();
+                
+                table.setRowCount(0);
+                while(set.next()){
+                    String project = set.getString("project_name");
+                    String teamLead = set.getString("team_lead");
+                    String assignedDate = set.getString("assigned_date");
+                    String dueDate = set.getString("due_date");
+                    String status = set.getString("completion_status");
+                    String completionDate = set.getString("completion_date");
+                    String department = set.getString("department");
+                    String cost = set.getString("cost");
+                    String[] row = {project, teamLead, department, assignedDate, dueDate,status, completionDate,cost};
+                    table.addRow(row);
+
+                }
+            }else{
+                PreparedStatement stmI = conn.prepareStatement("SELECT id FROM registered_users where email = ?");
+                stmI.setString(1, validEmail);
+                String userID = null;
+                ResultSet setI = stmI.executeQuery();
+                while(setI.next()){
+                    userID = setI.getString("id"); 
+                }
+                PreparedStatement stm = conn.prepareStatement("SELECT * FROM registered_projects WHERE user_id = ?");
+                stm.setString(1, userID);
+                ResultSet set = stm.executeQuery();
+                
+                table.setRowCount(0);
+                while(set.next()){
+                    String project = set.getString("project_name");
+                    String teamLead = set.getString("team_lead");
+                    String assignedDate = set.getString("assigned_date");
+                    String dueDate = set.getString("due_date");
+                    String status = set.getString("completion_status");
+                    String completionDate = set.getString("completion_date");
+                    String department = set.getString("department");
+                    String cost = set.getString("cost");
+                    String[] row = {project, teamLead, department, assignedDate, dueDate,status, completionDate,cost};
+                    table.addRow(row);
+
+                }
+
             }
-            
         } catch (SQLException ex) {
             Logger.getLogger(ProjectManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
